@@ -21,6 +21,10 @@ return [
     'image'=>'الصورة الشخصية',
     'action'=>'الحدث',
 
+    // categories index
+    'category_name'=>'اسم الصنف',
+
+
     //actions
     'add'=>'أضف',
     'edit'=>'تعديل',

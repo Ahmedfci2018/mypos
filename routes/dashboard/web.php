@@ -12,8 +12,10 @@ Route::group(
                 Route::get('/index', 'DashboardController@index')->name('index'); // home route
 
                 //users route
-
                 Route::resource('users', 'UserController')->except(['show']);
+
+                //categories route
+                Route::resource('categories', 'CategoryController')->except(['show']);
 
             }); //end of group function
 });//end of dashboard routes
