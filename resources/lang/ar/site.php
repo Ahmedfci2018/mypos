@@ -24,7 +24,6 @@ return [
     // categories index
     'category_name'=>'اسم الصنف',
 
-
     //actions
     'add'=>'أضف',
     'edit'=>'تعديل',
@@ -37,11 +36,20 @@ return [
 
     //tabs
     'permissions'=>'الصلاحيات',
-    'categories'=>'الأقسام',
-    'products'=>'الأصناف',
+    'categories'=>'الأصناف',
+    'products'=>'المنتجات',
 
     //Noty
     'yes'=>'نعم',
     'no'=>'لا',
     'confirm_delete'=>'تأكيد الحذف',
+
+    //Translations
+    'ar'=>[
+        'name'=>'الاسم باللغه العربية',
+    ],
+
+    'en'=>[
+        'name'=>'الاسم باللغه الإنجليزية',
+    ],
 ];

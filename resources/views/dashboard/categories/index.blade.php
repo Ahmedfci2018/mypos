@@ -48,10 +48,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('site.first_name')</th>
-                                <th>@lang('site.last_name')</th>
-                                <th>@lang('site.email')</th>
-                                <th>@lang('site.image')</th>
+                                <th>@lang('site.category_name')</th>
                                 <th>@lang('site.action')</th>
                             </tr>
                         </thead>
@@ -60,10 +57,7 @@
                             @foreach($categories as $index=>$category)
                                 <tr>
                                     <td>{{$index+1}}</td>
-                                    <td>{{$category->first_name}}</td>
-                                    <td>{{$category->last_name}}</td>
-                                    <td>{{$category->email}}</td>
-                                    <td><img src="{{$category->image_path}}" class="img-thumbnail" style="width: 100px;height: 100px"></td>
+                                    <td>{{$category->name}}</td>
                                     <td>
                                         @if(auth()->user()->hasPermission('update_categories'))
                                             <a href="{{route('dashboard.categories.edit',$category->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('site.edit')</a>
