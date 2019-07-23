@@ -147,14 +147,20 @@ return [
         'size' => 'الحجم',
         'image' => 'الصورة الشخصية',
         'permissions' => 'الصلاحيات',
+        'category_id' => 'الصنف',
+        'purchase_price' => 'سعر الشراء',
+        'sale_price' => 'سعر البيع',
+        'stock' => 'المخزن',
 
         //Translations Locale
 
         'ar'=>[
             'name'=>'الاسم باللغة العربية',
+            'description'=>'الوصف باللغة العربية',
         ],
         'en'=>[
             'name'=>'الاسم باللغة الانجليزية',
+            'description'=>'الوصف باللغة الإنجليزية',
         ],
     ],
 ];

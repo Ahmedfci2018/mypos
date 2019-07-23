@@ -22,7 +22,9 @@ return [
     'action'=>'الحدث',
 
     // categories index
-    'category_name'=>'اسم الصنف',
+    'name'=>'الاسم',
+    'products_count'=>'عدد المنتجات',
+    'related_products'=>'المنتجات المرتبطة',
 
     //actions
     'add'=>'أضف',
@@ -36,7 +38,7 @@ return [
 
     //tabs
     'permissions'=>'الصلاحيات',
-    'categories'=>'الأصناف',
+    'categories'=>'الأقسام',
     'products'=>'المنتجات',
 
     //Noty
@@ -47,9 +49,22 @@ return [
     //Translations
     'ar'=>[
         'name'=>'الاسم باللغه العربية',
+        'description'=>'الوصف باللغة العربية',
     ],
 
     'en'=>[
         'name'=>'الاسم باللغه الإنجليزية',
+        'description'=>'الوصف باللغة الإنجليزية',
     ],
+
+    //products
+    'purchase_price'=>'سعر الشراء',
+    'sale_price'=>'سعر البيع',
+    'stock'=>'المخزن',
+    'all_categories'=>'كل الأقسام',
+    'description'=>'الوصف',
+    'profit_percent'=>'نسبة الربح',
+    'category'=>'القسم',
+
+
 ];

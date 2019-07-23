@@ -157,14 +157,14 @@
                     <li class="dropdown user user-menu">
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{ asset('dashboard/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                            <img src="{{ asset(auth()->user()->image_path) }}" class="user-image" alt="User Image">
                             <span class="hidden-xs">{{auth()->user()->first_name . ' ' . auth()->user()->last_name}}</span>
                         </a>
                         <ul class="dropdown-menu">
 
                             {{--<!-- User image -->--}}
                             <li class="user-header">
-                                <img src="{{ asset('dashboard/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                                <img src="{{ asset(auth()->user()->image_path) }}" class="img-circle" alt="User Image">
 
                                 <p>
                                     {{auth()->user()->first_name . ' ' . auth()->user()->last_name}}
@@ -222,6 +222,10 @@
 <script src="{{ asset('dashboard/js/adminlte.min.js') }}"></script>
 
 
+{{--<!-- CKEditor App -->--}}
+<script src="{{ asset('dashboard/plugins/ckeditor/ckeditor.js') }}"></script>
+
+
 <script>
     $(document).ready(function () {
         $('.sidebar-menu').tree();
@@ -271,7 +275,9 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
-    })
+
+        CKEDITOR.config.language="{{app()->getLocale()}}";
+    });
 
 
 </script>

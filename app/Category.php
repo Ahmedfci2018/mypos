@@ -8,8 +8,13 @@ class Category extends Model
 {
     use \Dimsav\Translatable\Translatable;
 
+    protected $guarded=[];
     public $translatedAttributes = ['name'];
 
-    protected $guarded=[];
+    // Relation between Products & Categories
+    public function products(){
+
+       return $this->hasMany(Product::class);
+    }// end of products
 
 } //end of model
