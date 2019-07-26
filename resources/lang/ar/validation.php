@@ -147,6 +147,7 @@ return [
         'size' => 'الحجم',
         'image' => 'الصورة الشخصية',
         'permissions' => 'الصلاحيات',
+        'phone.0' => 'رقم الهاتف',
         'category_id' => 'الصنف',
         'purchase_price' => 'سعر الشراء',
         'sale_price' => 'سعر البيع',

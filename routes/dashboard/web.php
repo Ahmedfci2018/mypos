@@ -18,6 +18,10 @@ Route::group(
                 //products route
                 Route::resource('products', 'ProductController')->except(['show']);
 
+
+                //clients route
+                Route::resource('clients', 'ClientController')->except(['show']);
+
                 //users route
                 Route::resource('users', 'UserController')->except(['show']);
 

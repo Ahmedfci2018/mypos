@@ -40,6 +40,7 @@ return [
     'permissions'=>'الصلاحيات',
     'categories'=>'الأقسام',
     'products'=>'المنتجات',
+    'clients'=>'العملاء',
 
     //Noty
     'yes'=>'نعم',
@@ -65,6 +66,11 @@ return [
     'description'=>'الوصف',
     'profit_percent'=>'نسبة الربح',
     'category'=>'القسم',
+
+    //clients
+    'phone.0'=>'رقم الهاتف ',
+    'phone.1'=>'رقم الهاتف 2',
+    'address'=>'العنوان',
 
 
 ];
