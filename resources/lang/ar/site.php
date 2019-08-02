@@ -40,7 +40,9 @@ return [
     'permissions'=>'الصلاحيات',
     'categories'=>'الأقسام',
     'products'=>'المنتجات',
+    'product'=>'المنتج',
     'clients'=>'العملاء',
+    'orders'=>'الطلبات',
 
     //Noty
     'yes'=>'نعم',
@@ -61,6 +63,7 @@ return [
     //products
     'purchase_price'=>'سعر الشراء',
     'sale_price'=>'سعر البيع',
+    'price'=>'السعر',
     'stock'=>'المخزن',
     'all_categories'=>'كل الأقسام',
     'description'=>'الوصف',
@@ -72,5 +75,11 @@ return [
     'phone.1'=>'رقم الهاتف 2',
     'address'=>'العنوان',
 
+    //orders
+    'add_order'=>'أضف طلب',
+    'quantity'=>'الكمية',
+    'total'=>'المجموع',
+
+    'no_records'=>'للأسف لا يوجد أي سجلات',
 
 ];

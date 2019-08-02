@@ -9,7 +9,8 @@ Route::group(
     function() {
             Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function() {
 
-                Route::get('/index', 'DashboardController@index')->name('index'); // home route
+                // home route
+                Route::get('/', 'WelcomeController@index')->name('welcome');
 
                 //categories route
                 Route::resource('categories', 'CategoryController')->except(['show']);
@@ -21,6 +22,7 @@ Route::group(
 
                 //clients route
                 Route::resource('clients', 'ClientController')->except(['show']);
+                Route::resource('clients.orders', 'client\OrderController')->except(['show']);
 
                 //users route
                 Route::resource('users', 'UserController')->except(['show']);
