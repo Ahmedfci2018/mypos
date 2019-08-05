@@ -23,6 +23,8 @@ return [
 
     // categories index
     'name'=>'Name',
+    'products_count'=>'Products Count',
+    'related_products'=>'Related Products',
 
     //actions
     'add'=>'Add',
@@ -38,6 +40,9 @@ return [
     'permissions'=>'Permissions',
     'categories'=>'Categories',
     'products'=>'Products',
+    'product'=>'Product',
+    'clients'=>'Client',
+    'orders'=>'Orders',
 
     //Noty
     'yes'=>'Yes',
@@ -47,11 +52,35 @@ return [
     //Translations
     'ar'=>[
         'name'=>'Name of Arabic',
+        'description'=>'Arabic Description',
     ],
 
     'en'=>[
         'name'=>'Name of English',
+        'description'=>'English Description',
     ],
+
+    //products
+    'purchase_price'=>'Purchase Price',
+    'sale_price'=>'Sale Price',
+    'price'=>'Price',
+    'stock'=>'Stock',
+    'all_categories'=>'All Categories',
+    'description'=>'Description',
+    'profit_percent'=>'Profit_Percent',
+    'category'=>'Category',
+
+    //clients
+    'phone.0'=>'Phone Number ',
+    'phone.1'=>'Phone Number 2',
+    'address'=>'Address',
+
+    //orders
+    'add_order'=>'Add Order',
+    'quantity'=>'Quantity',
+    'total'=>'Total',
+
+    'no_records'=>'Sorry !! No Records ',
 
 ];
 
