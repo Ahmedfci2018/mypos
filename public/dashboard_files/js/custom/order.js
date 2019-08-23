@@ -10,11 +10,11 @@ $(document).ready(function () {
         //disabled button on click
         $(this).removeClass('btn-success').addClass('btn-default disabled');
 
+        //       <input type="hidden" name="product_ids[]" value="${id}" >
         var html =
             `<tr>
                 <td>${name}</td>
-                <input type="hidden" name="products[]" value="${id}" >
-                <td><input type="number" name="quantites[]" data-price="${price}" class="form-control input-sm product-quantity" min="1" value="1"></td>
+                <td><input type="number" name="products[${id}][quantity]" data-price="${price}" class="form-control input-sm product-quantity" min="1" value="1"></td>
                 <td class="product-price">${price}</td>
                 <td><button class="btn btn-danger btn-remove-product btn-sm" data-id="${id}"><span class="fa fa-trash"></span> </button> </td>
              </tr>`;
@@ -78,4 +78,43 @@ $(document).ready(function () {
 
     }); //end of product-quantity
 
-});// end of function
+    $('.order-products').on('click', function (e) {
+
+        e.preventDefault();
+
+        $('#loading').css('display','flex');
+        var url= $(this).data('url');
+        var method= $(this).data('method');
+
+        $.ajax({
+
+            url: url,
+            method: method,
+
+            success: function (data) {
+                $('#loading').css('display','none');
+
+                // append products
+                $('#order-product-list').empty();
+                $('#order-product-list').append(data);
+            }
+        })
+
+
+    }); //end of order-products button action function
+
+    $(document).on('click', '.print-btn', function (e) {
+
+        e.preventDefault();
+
+
+        $('#print-area').printThis();
+
+
+        //$('#print-area').append('<h3 id="c_name"> <span >أحمد على</span></h3>');
+       // setTimeout(function () { $('#c_name').remove();} , 1000);
+
+
+    });
+
+});// end of document ready function

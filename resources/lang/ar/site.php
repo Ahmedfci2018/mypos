@@ -26,10 +26,15 @@ return [
     'products_count'=>'عدد المنتجات',
     'related_products'=>'المنتجات المرتبطة',
 
+    'show_products'=>'عرض المنتجات',
+    'show'=>'عرض',
+
     //actions
     'add'=>'أضف',
     'edit'=>'تعديل',
     'delete'=>'حذف',
+
+    'print'=>'طبع',
 
     //permission
     'create'=>'اضافة',
@@ -42,7 +47,9 @@ return [
     'products'=>'المنتجات',
     'product'=>'المنتج',
     'clients'=>'العملاء',
+    'client_name'=>'اسم العميل',
     'orders'=>'الطلبات',
+    'previous_orders'=>'الطلبات السابقة',
 
     //Noty
     'yes'=>'نعم',
@@ -77,8 +84,11 @@ return [
 
     //orders
     'add_order'=>'أضف طلب',
+    'edit_order'=>'عدل طلب',
     'quantity'=>'الكمية',
     'total'=>'المجموع',
+
+    'created_at'=>'تمت إضافته',
 
     'no_records'=>'للأسف لا يوجد أي سجلات',
 

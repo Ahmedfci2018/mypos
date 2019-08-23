@@ -11,13 +11,14 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['category 1' , 'category 2' , 'category 3'];
+        $categories_ar = ['قسم 1' , 'قسم 2' , 'قسم 3'];
+        $categories_en = ['category 1' , 'category 2' , 'category 3'];
 
-        foreach ($categories as $category){
+        foreach ($categories_ar as $index=>$category){
 
             \App\Category::create([
-                'ar'=> ['name' => $category.' ar'],
-                'en'=> ['name' => $category.' en'],
+                'ar'=> ['name' => $category],
+                'en'=> ['name' => $categories_en[$index]],
             ]);
 
         } // end of foreach

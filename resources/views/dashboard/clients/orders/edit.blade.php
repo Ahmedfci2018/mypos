@@ -6,59 +6,207 @@
 
         <section class="content-header">
 
-            <h1>@lang('site.edit')</h1>
+            <h1>@lang('site.add_order')</h1>
 
             <ol class="breadcrumb">
-                <li> <a href="{{route('dashboard.welcome')}}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
-                <li> <a href="{{route('dashboard.clients.index')}}"><i class="fa fa-client"></i> @lang('site.clients')</a></li>
-                <li class="active"><i class="fa fa-plus"></i> @lang('site.edit')</li>
+                <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
+                <li><a href="{{ route('dashboard.clients.index') }}">@lang('site.clients')</a></li>
+                <li class="active">@lang('site.add_order')</li>
             </ol>
         </section>
 
         <section class="content">
 
-            <div class="box box-primary">
+            <div class="row">
 
-                <div class="box-header with-border">
-                    <h1 class="box-title"> @lang('site.edit')</h1>
-                </div> {{--end of box header--}}
+                <div class="col-md-6">
 
-                <div class="box-body">
+                    <div class="box box-primary">
 
-                    @include('partials._errors')
-                    <form action="{{route('dashboard.clients.update',$client->id)}}" method="post">
-                        {{csrf_field()}}
-                        {{method_field('put')}}
+                        <div class="box-header">
 
-                        <div class="form-group">
-                            <label>@lang('site.name')</label>
-                            <input type="text" class="form-control" name="name" value="{{$client->name}}">
-                        </div>
+                            <h3 class="box-title" style="margin-bottom: 10px">@lang('site.categories')</h3>
 
-                        @for($i=0; $i<2; $i++)
+                        </div><!-- end of box header -->
 
-                            <div class="form-group">
-                                <label>@lang('site.phone.' . $i)</label>
-                                <input type="text" class="form-control" name="phone[]" value="{{$client->phone[$i] ?? ''}}">
-                            </div>
+                        <div class="box-body">
 
-                        @endfor
+                            @foreach ($categories as $category)
 
-                        <div class="form-group">
-                            <label>@lang('site.address')</label>
-                            <input type="text" class="form-control" name="address" value="{{$client->address}}">
-                        </div>
+                                <div class="panel-group">
 
+                                    <div class="panel panel-info">
 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary" ><i class="fa fa-edit"></i> @lang('site.edit')</button>
-                        </div>
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" href="#{{ str_replace(' ', '-', $category->name) }}">{{ $category->name }}</a>
+                                            </h4>
+                                        </div>
 
-                    </form> {{--end of form--}}
+                                        <div id="{{ str_replace(' ', '-', $category->name) }}" class="panel-collapse collapse">
 
-                </div> {{--end of box body--}}
+                                            <div class="panel-body">
 
-            </div> {{--  end of box--}}
+                                                @if ($category->products->count() > 0)
+
+                                                    <table class="table table-hover">
+                                                        <tr>
+                                                            <th>@lang('site.name')</th>
+                                                            <th>@lang('site.stock')</th>
+                                                            <th>@lang('site.price')</th>
+                                                            <th>@lang('site.add')</th>
+                                                        </tr>
+
+                                                        @foreach ($category->products as $product)
+                                                            <tr>
+                                                                <td>{{ $product->name }}</td>
+                                                                <td>{{ $product->stock }}</td>
+                                                                <td>{{ number_format($product->sale_price, 2) }}</td>
+                                                                <td>
+                                                                    <a href=""
+                                                                       id="product-{{ $product->id }}"
+                                                                       data-name="{{ $product->name }}"
+                                                                       data-id="{{ $product->id }}"
+                                                                       data-price="{{ $product->sale_price }}"
+                                                                       class="btn {{in_array($product->id, $order->products->pluck('id')->toArray()) ? 'btn-default disabled' : 'btn-success'}}  btn-sm add-product-btn">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+
+                                                    </table><!-- end of table -->
+
+                                                @else
+                                                    <h5>@lang('site.no_records')</h5>
+                                                @endif
+
+                                            </div><!-- end of panel body -->
+
+                                        </div><!-- end of panel collapse -->
+
+                                    </div><!-- end of panel primary -->
+
+                                </div><!-- end of panel group -->
+
+                            @endforeach
+
+                        </div><!-- end of box body -->
+
+                    </div><!-- end of box -->
+
+                </div><!-- end of col -->
+
+                <div class="col-md-6">
+
+                    <div class="box box-primary">
+
+                        <div class="box-header">
+
+                            <h3 class="box-title">@lang('site.orders')</h3>
+
+                        </div><!-- end of box header -->
+
+                        <div class="box-body">
+
+                            <form action="{{route('dashboard.clients.orders.update',['client'=>$client->id, 'order'=>$order->id])}}" method="post">
+
+                                {{ csrf_field() }}
+                                {{ method_field('put') }}
+
+                                @include('partials._errors')
+
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>@lang('site.product')</th>
+                                        <th>@lang('site.quantity')</th>
+                                        <th>@lang('site.price')</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody class="order-list">
+                                    @foreach($order->products as $product )
+                                        <tr>
+                                            <td>{{$product->name}}</td>
+                                            <td><input type="number" name="products[{{$product->id}}][quantity]" data-price="{{number_format($product->sale_price, 2)}}" class="form-control input-sm product-quantity" min="1" value="{{$product->pivot->quantity}}"></td>
+                                            <td class="product-price">{{number_format($product->sale_price * $product->pivot->quantity, 2)}}</td>
+                                            <td><button class="btn btn-danger btn-remove-product btn-sm" data-id="{{$product->id}}"><span class="fa fa-trash"></span> </button> </td>
+                                        </tr>
+                                    @endforeach
+
+                                    </tbody>
+
+                                </table><!-- end of table -->
+
+                                <h4>@lang('site.total') : <span class="total-price">{{$order->total_price}}</span></h4>
+
+                                <button class="btn btn-primary btn-block disabled" id="add-order-form-btn"><i class="fa fa-edit"></i> @lang('site.edit_order')</button>
+
+                            </form>
+
+                        </div><!-- end of box body -->
+
+                    </div><!-- end of box -->
+
+                    {{--history of orders --}}
+                    @if ($client->orders->count() > 0)
+
+                        <div class="box box-primary">
+
+                            <div class="box-header">
+
+                                <h3 class="box-title" style="margin-bottom: 10px">@lang('site.previous_orders')
+                                    <small>{{ $orders->total() }}</small>
+                                </h3>
+
+                            </div><!-- end of box header -->
+
+                            <div class="box-body">
+
+                                @foreach ($orders as $order)
+
+                                    <div class="panel-group">
+
+                                        <div class="panel panel-success">
+
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" href="#{{ $order->created_at->format('d-m-Y-s') }}">{{ $order->created_at->toFormattedDateString() }}</a>
+                                                </h4>
+                                            </div>
+
+                                            <div id="{{ $order->created_at->format('d-m-Y-s') }}" class="panel-collapse collapse">
+
+                                                <div class="panel-body">
+
+                                                    <ul class="list-group">
+                                                        @foreach ($order->products as $product)
+                                                            <li class="list-group-item">{{ $product->name }}</li>
+                                                        @endforeach
+                                                    </ul>
+
+                                                </div><!-- end of panel body -->
+
+                                            </div><!-- end of panel collapse -->
+
+                                        </div><!-- end of panel primary -->
+
+                                    </div><!-- end of panel group -->
+
+                                @endforeach
+
+                                {{ $orders->links() }}
+
+                            </div><!-- end of box body -->
+
+                        </div><!-- end of box -->
+
+                    @endif
+
+                </div><!-- end of col -->
+
+            </div><!-- end of row -->
 
         </section><!-- end of content -->
 

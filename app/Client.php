@@ -18,4 +18,12 @@ class Client extends Model
        return $this->hasMany(Order::class);
 
     } // end of orders
-}
+
+    //set first char of client name in capital case
+    public function getNameAttribute($value){
+
+        return ucfirst($value);
+
+    } // end of attribute
+
+} // end of Client

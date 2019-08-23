@@ -30,6 +30,11 @@
                 <li><a href="{{ route('dashboard.clients.index') }}"><i class="fa fa-product-hunt"></i><span>@lang('site.clients')</span></a></li>
             @endif
 
+            {{--Orders--}}
+            @if(auth()->user()->hasPermission('read_orders'))
+                <li><a href="{{ route('dashboard.orders.index') }}"><i class="fa fa-product-hunt"></i><span>@lang('site.orders')</span></a></li>
+            @endif
+
             {{--Users--}}
             @if(auth()->user()->hasPermission('read_users'))
                 <li><a href="{{ route('dashboard.users.index') }}"><i class="fa fa-user"></i><span>@lang('site.users')</span></a></li>
